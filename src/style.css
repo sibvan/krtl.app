@@ -1,0 +1,403 @@
+/* import */
+
+@import "reset-css";
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@100..900&family=Noto+Sans:wght@100..900&display=swap");
+
+/* import */
+
+/* vars */
+:root {
+  --bg-color: light-dark(#e2e1dd, #282827);
+  --text-color: light-dark(#131313, #fff);
+  --page-width: 2430;
+
+  color-scheme: light dark;
+
+  --dark-50: light-dark(rgba(19, 19, 19, 0.5), rgba(255, 255, 255, 0.5));
+  --dark-20: light-dark(rgba(19, 19, 19, 0.2), rgba(255, 255, 255, 0.2));
+  --white-50: light-dark(rgba(255, 255, 255, 0.5), rgba(19, 19, 19, 0.5));
+  --white: light-dark(#fff, #131313);
+  --dark-10: light-dark(rgba(19, 19, 19, 0.1), rgba(255, 255, 255, 0.1));
+}
+
+/* vars */
+
+/* common */
+
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100dvh;
+  padding: 12px;
+  box-sizing: border-box;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: "Noto Sans", "Noto Sans Georgian";
+  font-optical-sizing: auto;
+  font-style: normal;
+  line-height: 100%;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+
+/* common */
+
+/* keyboard */
+
+.keyboard {
+  width: calc(100vw / 3 * 2);
+  background-color: var(--white-50);
+  border-radius: calc(100vw * 48 / var(--page-width));
+  padding: calc(100vw * 24 / var(--page-width));
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: calc(100vw * 12 / var(--page-width));
+}
+
+.keyboard__row {
+  display: flex;
+  gap: calc(100vw * 12 / var(--page-width));
+  justify-content: space-between;
+}
+
+.keyboard__key {
+  height: calc(100vw * 96 / var(--page-width));
+  min-width: calc(100vw * 96 / var(--page-width));
+  background: var(--white);
+  border-radius: calc(100vw * 8 / var(--page-width));
+  padding: calc(100vw * 16 / var(--page-width));
+  box-sizing: border-box;
+}
+
+.keyboard__key_blinking {
+  animation: blinking 1s infinite alternate ease-in;
+}
+
+@keyframes blinking {
+  from {
+  }
+  to {
+    background-color: #ecb22e;
+  }
+}
+
+.keyboard__row:first-child .keyboard__key:first-child {
+  border-top-left-radius: calc(100vw * 32 / var(--page-width));
+}
+
+.keyboard__row:first-child .keyboard__key:last-child {
+  border-top-right-radius: calc(100vw * 32 / var(--page-width));
+}
+
+.keyboard__row:last-child .keyboard__key:first-child {
+  border-bottom-left-radius: calc(100vw * 32 / var(--page-width));
+}
+
+.keyboard__row:last-child .keyboard__key:last-child {
+  border-bottom-right-radius: calc(100vw * 32 / var(--page-width));
+}
+
+.keyboard__key_space {
+  width: calc(100vw * 504 / var(--page-width));
+}
+
+.keyboard__key_delete,
+.keyboard__key_tab {
+  width: calc(100vw * 168 / var(--page-width));
+}
+
+.keyboard__key_caps-lock {
+  width: calc(100vw * 192 / var(--page-width));
+}
+
+.keyboard__key_enter {
+  width: calc(100vw * 180 / var(--page-width));
+}
+
+.keyboard__key_shift {
+  width: calc(100vw * 240 / var(--page-width));
+}
+
+.keyboard__key_command {
+  width: calc(100vw * 144 / var(--page-width));
+}
+
+.keyboard__key_center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(100vw * 24 / var(--page-width));
+}
+
+.keyboard__key_bottom-right {
+  display: flex;
+  align-items: end;
+  justify-content: end;
+}
+
+.keyboard__key_bottom-left {
+  display: flex;
+  align-items: end;
+  justify-content: start;
+}
+
+.keyboard__key_arrow-left,
+.keyboard__key_arrow-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.keyboard__key_inscription {
+  font-size: calc(100vw * 19 / var(--page-width));
+}
+
+.keyboard__key_top-bottom-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.keyboard__key_top-bottom-right {
+  display: flex;
+  align-items: end;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.keyboard__key_arrows-top-bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.keyboard__key_arrows-top-bottom::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: calc(100vw * 4 / var(--page-width));
+  background-color: light-dark(#f1f0ee, #1e1e1d);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.keyboard__key_10 {
+  color: var(--dark-10);
+}
+
+.keyboard__letter {
+  position: absolute;
+}
+
+.keyboard__letter:first-child {
+  opacity: 0.5;
+  text-transform: uppercase;
+  top: calc(100vw * 16 / var(--page-width));
+  left: calc(100vw * 16 / var(--page-width));
+}
+
+.keyboard__letter:nth-child(2) {
+  right: calc(100vw * 16 / var(--page-width));
+  bottom: calc(100vw * 16 / var(--page-width));
+}
+
+.keyboard__letter:nth-child(3) {
+  right: calc(100vw * 16 / var(--page-width));
+  top: calc(100vw * 16 / var(--page-width));
+  opacity: 0.2;
+}
+
+.keyboard__key_letter {
+  font-size: calc(100vw * 24 / var(--page-width));
+  position: relative;
+}
+
+/* keyboard */
+
+/* typing */
+
+.typing {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+.typing__inputs {
+  display: inline-block;
+  position: relative;
+}
+
+.typing__text {
+  font-size: 24px;
+  opacity: 0.5;
+  white-space: nowrap;
+}
+
+.typing__input {
+  font-size: 24px;
+  position: absolute;
+  z-index: 1;
+  font-family: "Noto Sans", "Noto Sans Georgian";
+  caret-color: var(--text-color);
+  border-bottom: 1px solid var(--dark-20);
+  padding-bottom: 8px;
+  box-sizing: border-box;
+  color: var(--text-color);
+  width: 100%;
+  text-align: left;
+  transition: border 0.2s ease-in-out;
+}
+
+.typing__input:hover {
+  border-bottom: 1px solid var(--dark-50);
+}
+
+.typing__input br {
+  display: none;
+}
+
+.typing__input:focus {
+  border-bottom: 1px solid var(--text-color);
+}
+
+.typing__input:focus,
+.typing__input:focus {
+  outline: none;
+}
+
+.typing__translate {
+  margin: 0 auto;
+  margin-top: 32px;
+  font-size: 16px;
+  line-height: 120%;
+  text-align: center;
+  opacity: 0.5;
+  width: fit-content;
+  max-width: calc(100vw / 3 * 2);
+  border-radius: 100px;
+  padding: 8px 16px;
+  box-sizing: border-box;
+  background-color: transparent;
+  transition: all .2s ease-in-out;
+
+}
+
+.typing__translate_next {
+
+  background: var(--text-color);
+  color: var(--white);
+  opacity: 1;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.typing__translate_next:hover {
+  border-color: transparent;
+  background-color: var(--dark-10);
+  color: var(--text-color);
+}
+
+.typing__input_red {
+  color: #ff584a;
+}
+
+/* typing */
+
+/* header */
+
+.header {
+  display: flex;
+  gap: 8px;
+}
+
+.header__btn {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--text-color);
+  font-size: 16px;
+  line-height: 100%;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  color: var(--text-color);
+  transition: border 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  background-color: transparent;
+   cursor: pointer;
+}
+
+.header__btn:hover {
+ 
+  border-color: transparent;
+  background-color: var(--dark-10);
+}
+
+/* header */
+
+/* footer */
+
+.footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+}
+
+.footer__copyright {
+  font-size: 16px;
+  text-align: center;
+
+  color: var(--dark-50);
+}
+
+.footer__link {
+  color: var(--text-color);
+  text-decoration: underline;
+  text-decoration-color: var(--dark-20);
+  color: var(--dark-50);
+  transition: text-decoration-color 0.2s ease-in-out;
+}
+.footer__link:hover {
+  text-decoration-color: var(--dark-50);
+}
+/* footer */
+
+/* touch screen */
+@media (pointer: coarse) {
+  .keyboard {
+    display: none;
+  }
+}
+
+/* touch screen */
+
+/* portrait */
+
+@media (orientation: portrait) {
+  .typing__translate {
+    max-width: 100%;
+  }
+  .keyboard {
+    width: calc(100vw - 24px);
+  }
+  :root {
+    --page-width: 1644;
+  }
+}
+
+/* portrait */
