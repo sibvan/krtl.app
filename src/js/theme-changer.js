@@ -18,7 +18,7 @@ export class ThemeChanger {
     } else if (newTheme === "dark") {
       document.documentElement.style.colorScheme = "dark";
     }
-    themeIconEl.setAttribute("src", `src/icons/${newTheme}_mode.svg`);
+    themeIconEl.setAttribute("src", `icons/${newTheme}_mode.svg`);
   }
 
   static rememberTheme(newTheme) {
